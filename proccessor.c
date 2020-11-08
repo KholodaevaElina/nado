@@ -71,7 +71,7 @@ int main () {
 			 _push (&processor_stack, number_to_add_to_stack);
 		 } else {
 			 switch (number_instruction) {
-				 case INSTRUCTION_NUMBER_IN:
+				case INSTRUCTION_NUMBER_IN:
 					 _in (&processor_stack);
 					 break;
 				case INSTRUCTION_NUMBER_POP:
@@ -130,34 +130,34 @@ void _hlt (Stack* p_stek) {
 
 void _out (Stack* p_stek) {
 	(p_stek -> top)--;
-	printf ("%lg", (p_stek -> data)[p_stek -> top]);
+	printf ("out::%lg", (p_stek -> data)[p_stek -> top]);
 }
 
 void _div (Stack* p_stek) {//check that there are at least two elements компилятор же должен ругаться
-        int difference_of_the_top_two_elements_of_the_stack = (p_stek -> data)[(p_stek -> top) - 1] - (p_stek -> data)[p_stek -> top - 2];
+        int division_of_the_top_two_elements_of_the_stack = (p_stek -> data)[(p_stek -> top) - 1] / (p_stek -> data)[p_stek -> top - 2];
         (p_stek -> top)--;
-        (p_stek -> data)[p_stek -> top] = difference_of_the_top_two_elements_of_the_stack;
+        (p_stek -> data)[(p_stek -> top) - 1] = division_of_the_top_two_elements_of_the_stack;
 }
 
 
 void _sub (Stack* p_stek) {//check that there are at least two elements компилятор же должен ругаться
         int difference_of_the_top_two_elements_of_the_stack = (p_stek -> data)[(p_stek -> top) - 1] - (p_stek -> data)[p_stek -> top - 2];
         (p_stek -> top)--;
-        (p_stek -> data)[p_stek -> top] = difference_of_the_top_two_elements_of_the_stack;
+        (p_stek -> data)[(p_stek -> top) - 1] = difference_of_the_top_two_elements_of_the_stack;
 }
 
 
 void _add (Stack* p_stek) {//check that there are at least two elements компилятор же должен ругаться
         int sum_of_the_top_two_elements_of_the_stack = (p_stek -> data)[(p_stek -> top) - 1] + (p_stek -> data)[p_stek -> top - 2];
         (p_stek -> top)--;
-        (p_stek -> data)[p_stek -> top] = sum_of_the_top_two_elements_of_the_stack;
+        (p_stek -> data)[(p_stek -> top) - 1] = sum_of_the_top_two_elements_of_the_stack;
 }
 
 
 void _mull (Stack* p_stek) {//check that there are at least two elements компилятор же должен ругаться 
 	int product_of_the_top_two_elements_of_the_stack = (p_stek -> data)[(p_stek -> top) - 1] * (p_stek -> data)[p_stek -> top - 2];
 	(p_stek -> top)--;
-	(p_stek -> data)[p_stek -> top] = product_of_the_top_two_elements_of_the_stack;
+	(p_stek -> data)[(p_stek -> top) - 1] = product_of_the_top_two_elements_of_the_stack;
 }
 	
 
