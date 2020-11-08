@@ -49,31 +49,40 @@ void _in (Stack* p_stek);
 
 
 int main () {
-	 Stack* p_processor_stack;
+	 Stack processor_stack;
 
-	 _constructor_stack (p_processor_stack);
+	 printf ("12\n");
+
+	 _constructor_stack (&processor_stack);
 
 	 FILE* input_file = fopen ("input.txt", "r");
-	 
+
+	 printf ("13\n");
+ 
 	 int number_of_instructions = 0;
 	 fscanf (input_file, "%d", &number_of_instructions);
+
+	 printf ("14\n");
 
 	 int number_instruction = 0;
 	 int number_to_add_to_stack = 0;
 
-	 for (int i = 0; i < number_of_instructions; i++) {
-	         fscanf (input_file, "%d", &number_instruction);
+	 printf ("15\n");
 
+
+	 for (int i = 0; i < number_of_instructions; i++) {
+		 printf ("16\n");
+	                 fscanf (input_file, "%d", &number_instruction);
 		 printf ("EEE");
 
 		 if (number_instruction == INSTRUCTION_NUMBER_PUSH) {
 			 fscanf (input_file, "%d", &number_to_add_to_stack);
-			 _push (p_processor_stack, number_to_add_to_stack);
-		 } else {
-			 switch (number_instruction) {
-				 case INSTRUCTION_NUMBER_IN: ;
-			 }
-		 }
+			 _push (&processor_stack, number_to_add_to_stack);
+		 }// else {
+		//	 switch (number_instruction) {
+		//		 case INSTRUCTION_NUMBER_IN: ;
+		//	 }
+	//	 }
  
 	 }
 }
@@ -143,8 +152,7 @@ void _in (Stack* p_stek) {
 }	
 
 void _constructor_stack (Stack* p_stek) {
-        p_stek = (Stack*) calloc (STACK_SIZE_AT_THE_TIME_THE_PROCESSOR_BEGINS, sizeof (Stack));
-        (p_stek -> top) = 0;
+        (p_stek -> data) = (double*) calloc (STACK_SIZE_AT_THE_TIME_THE_PROCESSOR_BEGINS, sizeof (double));
 }
 
 void _push (Stack* p_stek, double number_to_add_to_stack) {
