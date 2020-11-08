@@ -51,38 +51,62 @@ void _in (Stack* p_stek);
 int main () {
 	 Stack processor_stack;
 
-	 printf ("12\n");
-
 	 _constructor_stack (&processor_stack);
 
 	 FILE* input_file = fopen ("input.txt", "r");
-
-	 printf ("13\n");
  
 	 int number_of_instructions = 0;
 	 fscanf (input_file, "%d", &number_of_instructions);
 
-	 printf ("14\n");
-
 	 int number_instruction = 0;
 	 int number_to_add_to_stack = 0;
 
-	 printf ("15\n");
-
-
 	 for (int i = 0; i < number_of_instructions; i++) {
-		 printf ("16\n");
-	                 fscanf (input_file, "%d", &number_instruction);
-		 printf ("EEE");
+	         fscanf (input_file, "%d", &number_instruction);
+		 
+		 printf ("%d\n", number_instruction);
 
 		 if (number_instruction == INSTRUCTION_NUMBER_PUSH) {
 			 fscanf (input_file, "%d", &number_to_add_to_stack);
 			 _push (&processor_stack, number_to_add_to_stack);
-		 }// else {
-		//	 switch (number_instruction) {
-		//		 case INSTRUCTION_NUMBER_IN: ;
-		//	 }
-	//	 }
+		 } else {
+			 switch (number_instruction) {
+				 case INSTRUCTION_NUMBER_IN:
+					 _in (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_POP:
+					 _pop (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_MUL:
+					 _mull (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_ADD:
+				         _add (&processor_stack);
+				         break;
+				case INSTRUCTION_NUMBER_SUB:
+					 _sub (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_DIV:
+					 _div (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_OUT:
+					 _out (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_HLT:
+					 _hlt (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_SIN:
+					 _sin (&processor_stack);
+					 break;
+				case INSTRUCTION_NUMBER_COS:
+					 _cos (&processor_stack);
+				         break;
+				case INSTRUCTION_NUMBER_SQRT:
+					 _sqrt (&processor_stack);
+					 break;
+                                //default прописать с какой - нибудь ругалкой.					 
+			 }
+	         }
  
 	 }
 }
